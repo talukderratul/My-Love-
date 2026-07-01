@@ -182,18 +182,23 @@ yesBtn.onclick = function () {
 
     result.innerHTML = `
         <br><br>
-        ❤️ You just made my heart smile. ❤️
-        <br><br>
-        Thank you...
+
+        <h2 style="color:#ff2d55; font-size:42px;">
+            ❤️ Love You Babe ❤️
+        </h2>
+
+        <p style="font-size:24px; color:white;">
+            💖 You just made my heart smile. 💖
+            <br><br>
+            Thank you...
+        </p>
     `;
 
     createHeartRain();
 
-    setTimeout(function(){
-
+    setTimeout(function () {
         showPage(5);
-
-    },3000);
+    }, 3000);
 
 };
 
