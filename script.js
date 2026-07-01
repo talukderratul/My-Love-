@@ -24,15 +24,16 @@ const typing2 = document.getElementById("typing2");
 const typing3 = document.getElementById("typing3");
 
 const result = document.getElementById("result");
+const finalMessage = document.getElementById("finalMessage");
 
 
 /* ===========================================
    PAGE CHANGE
 =========================================== */
 
-function showPage(index){
+function showPage(index) {
 
-    pages.forEach(page=>{
+    pages.forEach(page => {
         page.classList.add("hidden");
     });
 
@@ -45,21 +46,21 @@ function showPage(index){
    TYPE WRITER
 =========================================== */
 
-function typeWriter(element,text,speed){
+function typeWriter(element, text, speed) {
 
-    element.innerHTML="";
+    element.innerHTML = "";
 
-    let i=0;
+    let i = 0;
 
-    function type(){
+    function type() {
 
-        if(i<text.length){
+        if (i < text.length) {
 
-            element.innerHTML+=text.charAt(i);
+            element.innerHTML += text.charAt(i);
 
             i++;
 
-            setTimeout(type,speed);
+            setTimeout(type, speed);
 
         }
 
@@ -74,7 +75,7 @@ function typeWriter(element,text,speed){
    PAGE 1
 =========================================== */
 
-next1.onclick=function(){
+next1.onclick = function () {
 
     showPage(1);
 
@@ -103,7 +104,7 @@ they become someone special.`,
    PAGE 2
 =========================================== */
 
-next2.onclick=function(){
+next2.onclick = function () {
 
     showPage(2);
 
@@ -136,7 +137,7 @@ I genuinely looked forward to talking to.`,
    PAGE 3
 =========================================== */
 
-next3.onclick=function(){
+next3.onclick = function () {
 
     showPage(3);
 
@@ -169,7 +170,7 @@ Just for you. ❤️`,
    PAGE 4
 =========================================== */
 
-next4.onclick=function(){
+next4.onclick = function () {
 
     showPage(4);
 
@@ -180,25 +181,43 @@ next4.onclick=function(){
 
 yesBtn.onclick = function () {
 
-    result.innerHTML = `
-        <br><br>
+    // YES চাপলে Ending Page-এ যাবে
+    showPage(5);
 
-        <h2 style="color:#ff2d55; font-size:42px;">
-            ❤️ Love You Babe ❤️
-        </h2>
+    // Ending Page-এ Love Message দেখাবে
+    finalMessage.innerHTML = `
+        <div style="text-align:center; padding:30px;">
 
-        <p style="font-size:24px; color:white;">
-            💖 You just made my heart smile. 💖
-            <br><br>
-            Thank you...
-        </p>
+            <div style="font-size:70px;">❤️</div>
+
+            <h1 style="color:#ff2d55; font-size:48px;">
+                Love You Babe ❤️
+            </h1>
+
+            <p style="font-size:24px; line-height:1.8; color:white;">
+
+                You just made my heart smile. 💖
+
+                <br><br>
+
+                Thank you for saying <b>YES</b>.
+
+                <br><br>
+
+                I promise to cherish you,
+                respect you,
+                and keep making you smile.
+
+                <br><br>
+
+                Forever starts today. ❤️
+
+            </p>
+
+        </div>
     `;
 
     createHeartRain();
-
-    setTimeout(function () {
-        showPage(5);
-    }, 3000);
 
 };
 
@@ -207,7 +226,40 @@ yesBtn.onclick = function () {
    I NEED SOME TIME
 =========================================== */
 
-timeBtn.onclick = function(){
+timeBtn.onclick = function () {
+
+    // Original Thank You Message ফিরিয়ে আনবে
+    finalMessage.innerHTML = `
+        <p>
+
+            No matter what your answer is...
+
+            <br><br>
+
+            Thank you for reading this.
+
+            <br><br>
+
+            Your smile is already
+            one of the most beautiful things
+            I've ever known.
+
+            <br><br>
+
+            Take your time.
+
+            <br><br><br>
+
+            With Love,
+
+            <br><br>
+
+            <span class="signature">
+                Ratul ❤️
+            </span>
+
+        </p>
+    `;
 
     showPage(5);
 
@@ -220,46 +272,46 @@ timeBtn.onclick = function(){
 
 const heartContainer = document.getElementById("hearts");
 
-function createHeart(){
+function createHeart() {
 
-    const heart=document.createElement("div");
+    const heart = document.createElement("div");
 
-    heart.className="floating-heart";
+    heart.className = "floating-heart";
 
-    heart.innerHTML="❤️";
+    heart.innerHTML = "❤️";
 
-    heart.style.left=Math.random()*100+"vw";
+    heart.style.left = Math.random() * 100 + "vw";
 
-    heart.style.fontSize=(18+Math.random()*30)+"px";
+    heart.style.fontSize = (18 + Math.random() * 30) + "px";
 
-    heart.style.animationDuration=(5+Math.random()*5)+"s";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
     heartContainer.appendChild(heart);
 
-    setTimeout(function(){
+    setTimeout(function () {
 
         heart.remove();
 
-    },10000);
+    }, 10000);
 
 }
 
-setInterval(createHeart,700);
+setInterval(createHeart, 700);
 
 
 /* ===========================================
    HEART RAIN
 =========================================== */
 
-function createHeartRain(){
+function createHeartRain() {
 
-    for(let i=0;i<80;i++){
+    for (let i = 0; i < 80; i++) {
 
-        setTimeout(function(){
+        setTimeout(function () {
 
             createHeart();
 
-        },i*60);
+        }, i * 60);
 
     }
 
